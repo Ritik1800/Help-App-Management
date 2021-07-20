@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Helper Welcome Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 600px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+    
+    .footer {
+	   position: fixed;
+	   left: 0;
+	   bottom: 0;
+	   width: 100%;
+	   background-color: #f1f1f1;
+	   color: black;
+	   text-align: center;
+	}
+	
+	#helpof{
+		background-color: #f1f1f1;
+      	height: 40px;
+      	width: 300px;
+	}
+	
+  </style>
+</head>
+
+
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h5 style="margin:10px"><b><span th:text="${session.user}"></span></b></h5>
+      <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="allHelp">All Help Status</a></li>
+        <li><a href="AddHelp">Add Help</a></li>
+         <li><a href="logout">Logout</a></li>
+      </ul><br>
+    </div>
+     <div>
+    	<div class="col-sm-9" style="margin-top:20px">
+    	    <h2>Part of being a person is about helping others</h2>
+    	    <br>
+    		<h4>Your Helps Status</h4>
+    		<hr style="height:1px;border-width:0;color:gray;background-color:gray">
+    		<div class="card bg-dark text-white" th:each="req:${session.reqs1}" style="margin:10px 0px;">
+			    <div class="card-body">
+			    	<div class="row">
+			     		<div class="col-md-11">
+			     			<h3 class="card-text" style="color:black;">Help of : <span th:text="${req.helpOf}"></span></h3>
+			     			<hr>
+			        		<h5 class="card-text">HelpId : <span th:text="${req.id}"></span> </h5>
+			        		<h5 class="card-text">Requester email : <span th:text="${req.requesteremail}"></span></h5>
+			        		<h5 class="card-text">Requester contact : <span th:text="${req.requesteremailcontact}"></span></h5>
+			        		<h5 class="card-text">Requester location : <span th:text="${req.requesteremaillocation}"></span></h5>
+			        		<h5 style="color:green"><b>Alloted to requester<br> Thankyou for helping!</b></h5>
+			        		<hr style="color:#A0A0A0;background-color:#A0A0A0">
+			     		</div>
+		      		</div>
+		      	 </div>
+		    </div>
+		    
+	    		<div class="card bg-dark text-white" th:each="req:${session.reqs}" style="margin:20px 0px;">
+				    <div class="card-body">
+				    	<div class="row">
+				     		<div class="col-md-11">
+				     			<h3 class="card-text" style="color:black;">Help of : <span th:text="${req.helpOf}"></span></h3>
+				        		<h5 style="color:red">Requester not alloted</h5>
+				        		<hr style="color:#A0A0A0;background-color:#A0A0A0">
+				     		</div>
+			      		</div>
+			      	 </div>
+			    </div>
+    		</div>	
+    	</div>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://nagarro.com/">Nagarro.com</a>
+  </div>
+  <!-- Copyright -->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+server:  port: 9008eureka:  client:    register-with-eureka: true    fetch-registry: true  instance:    hostname: localhost
+
+spring:
+  application:    name: GATEWAY-SERVICE
+  cloud:
+    discovery:      enabled: true
+    gateway:
+      discovery:        locator:          enabled: true
+          lower-case-service-id: true
+      routes:      - id: login-servi        uri: http://localhost:9001/        predicates:        - Path=/login/**
+      - id: login-service
+        uri: lb://LOGIN-INFO
+        predicates:        - Path=/login/**
+        
+      - id: provider-registration-service
+        uri: lb://PROVIDER-INFO
+        predicates:
+        - Path=/provider/**
+        
+      - id: receiver-registration-service
+        uri: lb://RECEIVER-INFO
+        predicates:
+        - Path=/receiver/**
+        
+      - id: request-service
+        uri: lb://REQUEST-INFO
+        predicates:
+        - Path=/request/**
+        
+      - id: help-service
+        uri: lb://HELP-INFO
+        predicates:
+        - Path=/help/**
+        
+      - id: request-help-service
+        uri: lb://REQUEST-HELP-PAIR
+        predicates:
+        - Path=/request-help/**
+                  

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Help</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 600px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+    
+    .footer {
+	   position: fixed;
+	   left: 0;
+	   bottom: 0;
+	   width: 100%;
+	   background-color: #f1f1f1;
+	   color: black;
+	   text-align: center;
+	}
+	
+	#helpof{
+		background-color: #f1f1f1;
+      	height: 40px;
+      	width: 300px;
+	}
+	
+  </style>
+</head>
+
+
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h5 style="margin:10px"><b><span th:text="${session.user}"></span></b></h5>
+      <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="allHelp">All Help Status</a></li>
+        <li><a href="AddHelp">Add Help</a></li>
+        <li><a href="logout">Logout</a></li>
+      </ul><br>
+      
+    </div>
+
+    <div class="col-sm-9">
+      <h4><small>ADD HELP</small></h4>
+      <hr>
+      <h2>Part of being a person is about helping others</h2>
+      <br>
+      <h5><i>heyyy Thankyou...fo giving help<br>to needy in this pandemic<br>we will try out best to serve<br>your help. <br><br>: Ritik Solanki</i></h5>
+      <hr>
+      <div class="col-md-8 col-sm-12">
+               <form action="addHelpRequest" style="margin-top: 20px">
+                  <div class="form-group">
+	                <label for="helpOf">Giving help for </label>
+					<select class="form-control" id="helpOf" name="helpOf">
+					  <option  value="Clothes">Clothes</option>
+					  <option value="Food packets">Food packets</option>
+					  <option value="Medical consultation">Medical consultation</option>
+					  <option value="Medical apparatus">Medical apparatus</option>
+					  <option value="Medicines">Medicines</option>
+					</select>
+				</div>
+				<div class="form-group">
+                     <label>Location</label>
+                     <input type="text" class="form-control" placeholder="location" id="location" name="location" required>
+                </div>
+				<button type="submit" class="btn btn-black">Give Help</button>
+               </form>
+               </div>
+         </div>         
+    </div>
+  </div>
+
+<div class="footer">
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://nagarro.com/">Nagarro.com</a>
+  </div>
+  <!-- Copyright -->
+</div>
+
+</body>
+</html>
